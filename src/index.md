@@ -39,6 +39,17 @@ toc: false
 
 ---
 
+## Pages
+
+<div class="grid grid-cols-4">
+  <div class="card">
+    <a href="power-function-explorer"><strong>Power Function Explorer</strong></a><br>
+    Interactively plot <em>f(x) = a · xⁿ</em> with sliders for <em>a</em> and <em>n</em>.
+  </div>
+</div>
+
+---
+
 ## Next steps
 
 Here are some ideas of things you could try…

@@ -5,7 +5,11 @@ theme: [wide]
 
 # Power Function Explorer
 
-Explore the function **f(x) = ${a} · x^${n}** by adjusting the sliders below.
+
+
+```tex
+f(x) = ${a} · x^{${n}}
+```
 
 ```js
 const a = view(Inputs.range([-5, 5], {value: 1, step: 0.1, label: "a"}));

@@ -1,6 +1,16 @@
 ---
 title: Power Function Explorer
+theme: [wide]
+header: false
+footer: false
+sidebar: false
+toc: false
 ---
+
+<style>
+  article { display: flex; flex-direction: column; align-items: center; }
+  article > * { width: 100%; max-width: 800px; }
+</style>
 
 # Power Function Explorer
 
@@ -16,7 +26,7 @@ const n = view(Inputs.range([-4, 8], {value: 2, step: 1, label: "n"}));
 
 ```js
 resize((width) => {
-  const size = Math.min(width, 900);
+  const size = Math.min(width, window.innerHeight - 160);
   const svg = Plot.plot({
     title: `f(x) = ${a} · x^${n}`,
     width: size,
@@ -29,9 +39,10 @@ resize((width) => {
       Plot.line(
         Array.from({length: 1000}, (_, i) => {
           const x = -5 + i * (10 / 999);
-          return {x, y: a * Math.pow(x, n)};
-        }).filter(d => isFinite(d.y) && d.y >= -5 && d.y <= 5),
-        {x: "x", y: "y", stroke: "steelblue", strokeWidth: 2.5}
+          const y = a * Math.pow(x, n);
+          return {x, y: (isFinite(y) && y >= -5 && y <= 5) ? y : NaN};
+        }),
+        {x: "x", y: "y", defined: (d) => !isNaN(d.y), stroke: "steelblue", strokeWidth: 2.5}
       )
     ]
   });
